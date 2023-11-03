@@ -35,5 +35,5 @@ def search(song):
        
 def lyrics(song):
         fin = search(song)
-        text = fin["lyrics"]
+        text = find["lyrics"]
         return text
