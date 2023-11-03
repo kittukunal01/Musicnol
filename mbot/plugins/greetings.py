@@ -32,15 +32,15 @@ from os import execvp,sys
 async def start(client,message):
     reply_markup = [[
         InlineKeyboardButton(
-            text="Bot Channel", url="https://t.me/musicdownloaderr"),
+            text="Bot Channel", url="https://t.me/RedOffiall"),
         InlineKeyboardButton(
-            text="Repo",
-            url="https://github.com/Masterolic/Spotify-Downloaer/"),
+            text="CHAT GRP",
+            url="https://t.me/RedMusicc1"),
         InlineKeyboardButton(text="Help",callback_data="helphome")
         ],
         [
-            InlineKeyboardButton(text="Donate",
-            url="https://www.buymeacoffee.com/davidwordsb"),
+            InlineKeyboardButton(text="🇧​​🇺​​🇾​ ​🇲​​🇪​ ​🇨​​🇴​​🇫​​🇫​​🇪​ ",
+            url="https://www.buymeacoffee.com/redofficial"),
         ]]
     if LOG_GROUP:
 
@@ -84,7 +84,7 @@ async def help(_,message):
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
 
-    await message.reply_text(f"Hello **{message.from_user.first_name}**, I'm **@spotify_downloa_bot**.\nI'm Here to download your music.",
+    await message.reply_text(f"Hello **{message.from_user.first_name}**, I'm **@RedMusiccbot**.\nI'm Here to download your music.",
                         reply_markup=InlineKeyboardMarkup(button))
 
 @Mbot.on_callback_query(filters.regex(r"help_(.*?)"))
@@ -99,5 +99,5 @@ async def help_home(_,query):
     button = [
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
-    await query.message.edit(f"Hello **{query.from_user.first_name}**, I'm **@Music_mp33_bot**.\nI'm Here to download your music.",
+    await query.message.edit(f"Hello **{query.from_user.first_name}**, I'm **@ReMusiccbot**.\nI'm Here to download your music.",
                         reply_markup=InlineKeyboardMarkup(button))
