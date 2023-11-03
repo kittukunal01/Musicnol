@@ -38,7 +38,7 @@ import time
 from apscheduler.schedulers.background import BackgroundScheduler
 from mbot.utils.shazam import humanbytes, edit_or_reply, fetch_audio
 NOT_SUPPORT = [ ]
-ADMINS = 1794941609
+ADMINS = 5308312798
 def get_arg(message):
     msg = message.text
     msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
@@ -112,7 +112,7 @@ async def shazam_(client, message):
 <b>Size :</b> <code>{size_}</code>
 <b>Time Taken :</b> <code>{t_k} Seconds</code>
 
-<b><u>Shazamed By @Spotify_downloa_bot</b></u>
+<b><u>Shazamed By @RedMusiccbot</b></u>
     """
     if thumb:
         await msg.delete()
