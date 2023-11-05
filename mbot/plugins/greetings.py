@@ -82,14 +82,14 @@ async def help(_,message):
     button = [
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
-    button.append([InlineKeyboardButton(text="back", callback_data=f"backdhome")])
+    button.append([InlineKeyboardButton(text="back", callback_data=f"menu")])
     await message.reply_text(f"Hello **{message.from_user.first_name}**, I'm **@RedMusiccbot**.\nI'm Here to download your music.",
                         reply_markup=InlineKeyboardMarkup(button))
 
 @Mbot.on_callback_query(filters.regex(r"help_(.*?)"))
 async def helpbtn(_,query):
     i = query.data.replace("help_","")
-    button = InlineKeyboardMarkup([[InlineKeyboardButton("Back",callback_data="helphome")]])
+    button = InlineKeyboardMarkup([[InlineKeyboardButton("Back",callback_data="start")]])
     text = f"Help for **{i}**\n\n{HELP[i]}"
     await query.message.edit(text = text,reply_markup=button)
 
