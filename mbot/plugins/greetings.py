@@ -34,7 +34,7 @@ async def start(client,message):
         InlineKeyboardButton(
             text="Bot Channel", url="https://t.me/RedOffiall"),
         InlineKeyboardButton(
-            text="CHAT GRP",
+            text="Chat GRP",
             url="https://t.me/RedMusicc1"),
         InlineKeyboardButton(text="Help",callback_data="helphome")
         ],
@@ -74,7 +74,6 @@ HELP = {
     "Deezer": "Send Deezer Playlist/Album/Track Link. I'll Download It For You.",
     "Jiosaavn":"send format `/saavn music name`. Eg `/saavn dil ko karar` ",
     "SoundCloud": "send **Sound Cloud link in Chat To Download Song.",
-    "Group": "Will add later."
 }
 
 
@@ -83,7 +82,7 @@ async def help(_,message):
     button = [
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
-
+    button.append([InlineKeyboardButton(text="back", callback_data=f"backdome")])
     await message.reply_text(f"Hello **{message.from_user.first_name}**, I'm **@RedMusiccbot**.\nI'm Here to download your music.",
                         reply_markup=InlineKeyboardMarkup(button))
 
