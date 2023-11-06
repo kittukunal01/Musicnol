@@ -32,15 +32,15 @@ from os import execvp,sys
 async def start(client,message):
     reply_markup = [[
         InlineKeyboardButton(
-            text="Bot Channel", url="https://t.me/RedOffiall"),
+            text="Bot Channel", url="https://t.me/Spotify_downloa"),
         InlineKeyboardButton(
-            text="Chat GRP",
-            url="https://t.me/RedMusicc1"),
+            text="Repo",
+            url="https://github.com/Masterolic/Spotify-Downloader/"),
         InlineKeyboardButton(text="Help",callback_data="helphome")
         ],
         [
-            InlineKeyboardButton(text="🇧​​🇺​​🇾​ ​🇲​​🇪​ ​🇨​​🇴​​🇫​​🇫​​🇪​ ",
-            url="https://www.buymeacoffee.com/redofficial"),
+            InlineKeyboardButton(text="Donate",
+            url="https://www.buymeacoffee.com/Masterolic"),
         ]]
     if LOG_GROUP:
 
@@ -49,7 +49,7 @@ async def start(client,message):
     if message.chat.type != "private" and message.chat.id not in AUTH_CHATS and message.from_user.id not in SUDO_USERS:
         return await message.reply_text("This Bot Will Not Work In Groups Unless It's Authorized.",
                     reply_markup=InlineKeyboardMarkup(reply_markup))
-    return await message.reply_photo("https://graph.org/file/e253d4140db72956e2a3f.jpg",caption=f"Hello {message.from_user.first_name}, I'm a Simple Music Downloader Bot. I Currently Support Download from Youtube.",
+    return await message.reply_text(f"Hello {message.from_user.first_name}, I'm a Simple Music Downloader Bot. I Currently Support Download from Youtube.",
                     reply_markup=InlineKeyboardMarkup(reply_markup))
 
 @Mbot.on_message(filters.command("restart") & filters.chat(OWNER_ID) & filters.private)
@@ -72,8 +72,9 @@ HELP = {
     "Youtube": "Send **Youtube** Link in Chat to Download Song.",
     "Spotify": "Send **Spotify** Track/Playlist/Album/Show/Episode's Link. I'll Download It For You.",
     "Deezer": "Send Deezer Playlist/Album/Track Link. I'll Download It For You.",
-    "Jiosaavn":"send format `/saavn music name`. Eg `/saavn dil ko karar` ",
-    "SoundCloud": "send **Sound Cloud link in Chat To Download Song.",
+    "Jiosaavn": "Not Implemented yet",
+    "SoundCloud": "Not Implemented yet",
+    "Group": "Will add later."
 }
 
 
@@ -82,14 +83,23 @@ async def help(_,message):
     button = [
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
-   ([InlineKeyboardButton(text="back", callback_data=f"menu")])
-    await message.reply_text(f"Hello **{message.from_user.first_name}**, I'm **@RedMusiccbot**.\nI'm Here to download your music.",
+    button.append([InlineKeyboardButton(text="back", callback_data=f"backdome")])
+    await message.reply_text(f"Hello **{message.from_user.first_name}**, I'm **@spotify_downloa_bot**.\nI'm Here to download your music.",
                         reply_markup=InlineKeyboardMarkup(button))
 
+@Mbot.on_callback_query(filters.regex(r"backdome"))
+async def backdo(_,query):
+    button = [
+        [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
+    ]
+    button.append([InlineKeyboardButton(text="back", callback_data=f"backdome")])
+    await query.message.edit(f"Hello **{query.message.from_user.first_name}**, I'm **@spotify_downloa_bot**.\nI'm Here to download your music.",
+                        reply_markup=InlineKeyboardMarkup(button))     
+    
 @Mbot.on_callback_query(filters.regex(r"help_(.*?)"))
 async def helpbtn(_,query):
     i = query.data.replace("help_","")
-    button = InlineKeyboardMarkup([[InlineKeyboardButton("Back",callback_data="start")]])
+    button = InlineKeyboardMarkup([[InlineKeyboardButton("Back",callback_data="helphome")]])
     text = f"Help for **{i}**\n\n{HELP[i]}"
     await query.message.edit(text = text,reply_markup=button)
 
@@ -98,5 +108,5 @@ async def help_home(_,query):
     button = [
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
-    await query.message.edit(f"Hello **{query.from_user.first_name}**, I'm **@ReMusiccbot**.\nI'm Here to download your music.",
-                        reply_markup=InlineKeyboardMarkup(button))
+    await query.message.edit(f"Hello **{query.from_user.first_name}**, I'm **@NeedMusicRobot**.\nI'm Here to download your music.",
+                        reply_markup=InlineKeyboardMarkup(button)
