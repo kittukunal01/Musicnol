@@ -88,14 +88,8 @@ async def help(_,message):
                         reply_markup=InlineKeyboardMarkup(button))
 
 @Mbot.on_callback_query(filters.regex(r"backdome"))
-async def backdo(_,query):
-    button = [
-        [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
-    ]
-    button.append([InlineKeyboardButton(text="back", callback_data=f"backdome")])
-    await query.message.edit(f"Hello **{query.message.from_user.first_name}**, I'm **@spotify_downloa_bot**.\nI'm Here to download your music.",
-                        reply_markup=InlineKeyboardMarkup(button))     
-    
+async def backdo(client,query):
+    await start(client, query.message)    
 @Mbot.on_callback_query(filters.regex(r"help_(.*?)"))
 async def helpbtn(_,query):
     i = query.data.replace("help_","")
