@@ -102,5 +102,6 @@ async def help_home(_,query):
     button = [
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
+    button.append([InlineKeyboardButton(text="back", callback_data=f"backdome")])
     await query.message.edit(f"Hello **{query.from_user.first_name}**, I'm **@NeedMusicRobot**.\nI'm Here to download your music.",
                         reply_markup=InlineKeyboardMarkup(button))
