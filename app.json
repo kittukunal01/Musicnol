@@ -6,7 +6,7 @@
     "music",
     "music downloader"
   ],
-  "repository": "https://github.com/masterolic/",
+  "repository": "https://github.com/kittukunal01/Musicnol",
   "website": "https://t.me/Spotify_downloa",
   "success_url": "https://t.me/spotify_downloa_bot",
   "env": {
